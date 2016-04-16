@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+  /* 必需 */
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+/* .expand-enter 定义进入的开始状态 */
+/* .expand-leave 定义离开的结束状态 */
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+
+</style>
+
+<script src="vue.js"></script>
+</head>
+<body style="font-size: 2em;">
+
+<div id="app">
+<h2>列表</h2>
+  <button @click="add" style="font-size: 1em;" >加一本</button>
+  <button @click="reduce" style="font-size: 1em;" >减一本</button>
+  <ul>
+    <li v-for="todo in todos"  transition="expand"  >
+      {{ todo.text }}
+    </li>
+  </ul>
+  
+</div>
+
+<script>
+var books=[
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue.js' },
+      { text: 'Build Something Awesome' }
+    ];
+
+var vm = new Vue({
+  el: '#app',
+  data: {
+    todos: books
+  },
+  methods:{
+    add : function(){ 
+      this.todos.push({ text: '我是一本新书' });
+      console.log(this.todos);
+    },
+    reduce : function(){ 
+      this.todos.splice(0,1); 
+      console.log(vm.todos);
+      //console.log(books);
+    }
+  }
+});
+
+</script>
+</body>
+</html>

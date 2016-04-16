@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js"></script>
+</head>
+<body style="font-size: 2em;">
+
+<div id="app">
+<h2>Filter</h2>
+  过滤条件：<input v-model="param" style="font-size: 1em;" />
+  <br>  <br>  
+  <button @click="add" style="font-size: 1em;" >加一本</button>
+  
+  <ul>
+    <li v-for="todo in todos | filterBy param">
+      {{ todo.text }}
+    </li>
+  </ul>
+  
+</div>
+
+<script>
+var books=[
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue.js' },
+      { text: 'Learn PHP' },
+      { text: 'Learn Python' },
+      { text: 'Learn Angular.js' },
+      { text: 'Learn MySQL' },
+      { text: 'Build Something Awesome' }
+    ];
+//var param = '';
+var vm = new Vue({
+  el: '#app',
+  data: {
+    todos: books,
+    param: ''
+  },
+  methods:{
+    add : function(){ 
+      this.todos.push({ text: '我是一本新书' });
+      console.log(this.todos);
+    },
+    reduce : function(){ 
+      this.todos.splice(0,1); 
+      console.log(vm.todos);
+      //console.log(books);
+    }
+  }
+});
+
+</script>
+</body>
+</html>

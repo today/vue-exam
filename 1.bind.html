@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>双向绑定</title>
+<script src="vue.js"></script>
+</head>
+<body style="font-size: 2em;">
+
+  <div id="exam-1">
+  <h2>数据双向绑定</h2>
+  
+    <input v-model="message" style="font-size: 1em;" /><br><br>
+    {{ message }} <br><br>
+    {{ message | capitalize }} <br><br>
+    {{ message | uppercase }} <br><br>
+    
+  
+</div>
+<script>
+var example1 = new Vue({
+  el: '#exam-1',
+  data: {
+    message: 'welcome to gdg xian'
+  }
+})
+</script>
+</body>
+</html>
