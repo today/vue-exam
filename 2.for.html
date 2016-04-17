@@ -29,37 +29,37 @@
 
 <div id="app">
 <h2>列表</h2>
-  <button @click="add" style="font-size: 1em;" >加一本</button>
-  <button @click="reduce" style="font-size: 1em;" >减一本</button>
+  <button @click="add" style="font-size: 1em;" >加一本书</button>
+  <button @click="reduce" style="font-size: 1em;" >减一本书</button>
   <ul>
-    <li v-for="todo in todos"  transition="expand"  >
-      {{ todo.text }}
+    <li v-for="book in books"  transition="expand"  >
+      {{ book.name }}
     </li>
   </ul>
   
 </div>
 
 <script>
-var books=[
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue.js' },
-      { text: 'Build Something Awesome' }
+var book_array=[
+      { name: 'Learn JavaScript' },
+      { name: 'Learn Vue.js' },
+      { name: 'Build Something Awesome' }
     ];
 
 var vm = new Vue({
   el: '#app',
   data: {
-    todos: books
+    books: book_array
   },
   methods:{
     add : function(){ 
-      this.todos.push({ text: '我是一本新书' });
-      console.log(this.todos);
+      this.books.push({ name: '我是一本新书' });
+      console.log(this.books);
     },
     reduce : function(){ 
-      this.todos.splice(0,1); 
-      console.log(vm.todos);
-      //console.log(books);
+      this.books.splice(0,1); 
+      console.log(vm.books);
+      //console.log(book_array);
     }
   }
 });

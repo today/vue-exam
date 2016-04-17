@@ -14,8 +14,8 @@
   <button @click="add" style="font-size: 1em;" >加一本</button>
   
   <ul>
-    <li v-for="todo in todos | filterBy param">
-      {{ todo.text }}
+    <li v-for="book in books | filterBy param">
+      {{ book.text }}
     </li>
   </ul>
   
@@ -35,17 +35,17 @@ var books=[
 var vm = new Vue({
   el: '#app',
   data: {
-    todos: books,
+    books: books,
     param: ''
   },
   methods:{
     add : function(){ 
-      this.todos.push({ text: '我是一本新书' });
-      console.log(this.todos);
+      this.books.push({ text: '我是一本新书' });
+      console.log(this.books);
     },
     reduce : function(){ 
-      this.todos.splice(0,1); 
-      console.log(vm.todos);
+      this.books.splice(0,1); 
+      console.log(vm.books);
       //console.log(books);
     }
   }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js"></script>
+<script src="jquery-2.2.2.js"></script>
+</head>
+<body style="font-size: 1.6em;">
+
+<div id="app">
+<h2>AJAX</h2>
+  加一本新书：<input v-model="newbook" style="font-size: 1em;" /> 
+  <button @click="add" style="font-size: 1em;" > 提交 </button>
+  <br><br> 运行结果：  {{message}}
+  <br><br>
+  <button @click="load" style="font-size: 1em;" > 重新获取图书列表 </button>
+  <ul>
+    <li v-for="book in books | filterBy param">
+      {{ book.name }}
+    </li>
+  </ul>
+  
+</div>
+
+<script>
+var books=[
+      { name: 'Learn JavaScript' },
+      { name: 'Learn Vue.js' },
+      { name: 'Build Something Awesome' }
+    ];
+//var param = '';
+var vm = new Vue({
+  el: '#app',
+  data: {
+    message: "",
+    books: books,
+    newbook: 'learning ajax'
+  },
+  methods:{
+    add : function(){ 
+      addBook();
+      //console.log(this.books);
+    },
+    load : function(){ 
+      getBooks();
+      //console.log(this.books);
+    },
+    read_From_Server : function(){  
+      console.log(vm.books);
+      //console.log(books);
+    }
+  }
+});
+
+</script>
+
+<script type="text/javascript">  
+var baseUrl = "http://localhost:8000";
+
+var getBooks = function(){
+
+  console.log( "getBooks()" );
+  $.ajax({
+     url: baseUrl + "/getBooks", 
+     success: function(result){
+        console.log( result );
+        //var tempObj = JSON.parse(result);
+        vm.books = result.data;
+        vm.message = result.message;
+     },
+     error:function(xhr,status,error){
+        vm.message = "系统出现错误";
+        console.log("error:" + error);
+     }
+  });
+};
+
+var addBook = function(){
+
+  console.log( "addBook()" );
+  $.ajax({
+     url: baseUrl + "/addBook?bookname=" + vm.newbook, 
+     success: function(result){
+        console.log( result );
+        //var tempObj = JSON.parse(result);
+        vm.message = result.message;
+     },
+     error:function(xhr,status,error){
+        vm.message = "系统出现错误";
+        console.log("error:" + error);
+     }
+  });
+};
+
+</script>  
+</body>
+</html>
