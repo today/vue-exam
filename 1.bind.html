@@ -14,7 +14,7 @@
     {{ message }} <br><br>
     {{ message | capitalize }} <br><br>
     {{ message | uppercase }} <br><br>
-    
+    <button @click="chg" > Next </button>
   
 </div>
 <script>
@@ -22,6 +22,11 @@ var vm = new Vue({
   el: '#exam-1',
   data: {
     message: 'welcome to gdg xian'
+  },
+  methods:{
+    chg: function(){
+      this.message = 'Please enjoy your party.';
+    }
   }
 });
 </script>

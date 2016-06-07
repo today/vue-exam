@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>组件</title>
+<script src="vue.js"></script>
+</head>
+<body style="font-size: 2em;">
+
+<div id="exam-1">
+  <abc><abc>
+</div>
+
+<script>
+
+var Child = Vue.extend({ 
+  template: '<div>A Child !</div>'
+});
+
+var Parent = Vue.extend({
+  template: '<div>A custom component! <br> <def></def> </div>',
+  components: {
+    // <my-component> 只能用在父组件模板内
+    'def': Child
+  }
+});
+
+// 注册
+Vue.component('abc', Parent)
+
+// 创建根实例
+new Vue({
+  el: '#exam-1'
+})
+
+</script>
+</body>
+</html>

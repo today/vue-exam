@@ -33,7 +33,7 @@
   <button @click="reduce" style="font-size: 1em;" >减一本书</button>
   <ul>
     <li v-for="book in books"  transition="expand"  >
-      {{ book.name }}
+      {{ book.name }}  price: {{book.price}}
     </li>
   </ul>
   
@@ -41,9 +41,9 @@
 
 <script>
 var book_array=[
-      { name: 'Learn JavaScript' },
-      { name: 'Learn Vue.js' },
-      { name: 'Build Something Awesome' }
+      { name: 'Learn JavaScript',price: 10 },
+      { name: 'Learn Vue.js',price: 10 },
+      { name: 'Build Something Awesome',price: 10 }
     ];
 
 var vm = new Vue({
@@ -53,7 +53,7 @@ var vm = new Vue({
   },
   methods:{
     add : function(){ 
-      this.books.push({ name: '我是一本新书' });
+      this.books.push({ name: '我是一本新书',price:20 });
       console.log(this.books);
     },
     reduce : function(){ 

@@ -7,7 +7,7 @@ var books=[
 	      { name: '新书 4' },
 	      { name: 'Build Something Awesome' }
 	    ];
-
+//req=request   resp=response   ret=return
 http.createServer(function (req, res) { 
     console.log("I process a request.");
     var ret = {};
@@ -17,6 +17,7 @@ http.createServer(function (req, res) {
     	ret.data = books;
     	ret.message = "获取图书列表成功。";
     }else if (req.url.indexOf('/addBook') > -1 ){
+
     	ret.message = "添加图书成功。";
     }else {
 		ret.message = "Invalid URL.";
@@ -29,4 +30,4 @@ http.createServer(function (req, res) {
     res.end();
 
 }).listen(8000);
-console.log("Server running at http://localhost:8000");
+console.log("Server running http://IP:8000");
