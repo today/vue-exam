@@ -8,7 +8,9 @@
 <body style="font-size: 2em;">
 
 <div id="exam-1">
-  <abc><abc>
+  <abc></abc>
+  <br><br><br>
+  <abc2></abc2>
 </div>
 
 <script>
@@ -18,7 +20,15 @@ var Child = Vue.extend({
 });
 
 var Parent = Vue.extend({
-  template: '<div>A custom component! <br> <def></def> </div>',
+  template: '<div>A custom component  11111! <br> <def></def> </div>',
+  components: {
+    // <my-component> 只能用在父组件模板内
+    'def': Child
+  }
+});
+
+var Parent2 = Vue.extend({
+  template: '<div>A custom component 22222! <br> <def></def> </div>',
   components: {
     // <my-component> 只能用在父组件模板内
     'def': Child
@@ -26,7 +36,8 @@ var Parent = Vue.extend({
 });
 
 // 注册
-Vue.component('abc', Parent)
+Vue.component('abc', Parent);
+Vue.component('abc2', Parent2);
 
 // 创建根实例
 new Vue({
