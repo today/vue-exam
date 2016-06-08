@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+    <div id="bind">
+       
+
+        <h1>注册语法糖</h1>
+    
+        <yft></yft>
+    </div>
+</body>
+<script>
+
+    Vue.component('yft', {
+        components: {
+            'yftjb': {
+                template: '<div> YFTJB component!</div>'
+            }
+        },
+        template: '<p>YFT componet 2 <yftjb></yftjb> </p>'
+    });
+
+    new Vue({
+        el: '#bind'
+    });
+    Vue.config.devtools = true
+</script>
+</html>
